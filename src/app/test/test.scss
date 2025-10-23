@@ -1,15 +1,38 @@
+@use '@angular/material' as mat;
+
+$max-width: 500px;
+$margin: 0 auto;
+$standard-margin: 25px;
+$standard-padding: 25px;
+$gap: 2.5;
+
 form {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
-    margin: 0 auto;
+    justify-content: space-between;
+    gap: $gap + 2;
+    max-width: $max-width;
+    margin: $margin;
+    padding-top: $standard-padding;
+}
+
+.form-title {
+  margin: $margin;
+  padding-bottom: $standard-padding;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 2.5;
 }
 
 mat-card {
-    background: none;
-    box-shadow: none;
-    margin: 0 auto;
-    margin-top: 25px;
+    max-width: $max-width;
+    padding: $standard-padding;
+    margin: $margin;
+    margin-top: $standard-margin;
 }
 
 .snackbar-error {

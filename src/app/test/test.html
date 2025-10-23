@@ -1,15 +1,19 @@
-<mat-card>
-    <form action="#">
-        <mat-form-field>
-            <mat-label for="name">Nombre:</mat-label>
-            <input matInput id="name" type="text" placeholder="Introduzca nombre" [formControl]="name">
-        </mat-form-field>
-        <mat-divider />
-        <mat-form-field>
-            <mat-label for="description">Descripción:</mat-label>
-            <input matInput id="description" type="text" placeholder="Introduzca descripción"
-                [formControl]="description">
-        </mat-form-field>
-        <button matButton="filled" (click)="sendData()" type="button">Enviar</button>
-    </form>
+<mat-card class="form-card">
+  <form action="#" class="form-container" [formGroup]="form">
+    <h2 class="form-title">Envío de Datos</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" placeholder="Introduzca nombre">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" placeholder="Introduzca descripción" rows="3"></textarea>
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-flat-button color="primary" type="button" (click)="sendData()">Enviar</button>
+    </div>
+  </form>
 </mat-card>
