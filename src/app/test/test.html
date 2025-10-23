@@ -1,4 +1,15 @@
-<form>
-    <label>Nombre:</label>
-    <input type="text">
-</form>
+<mat-card>
+    <form action="#">
+        <mat-form-field>
+            <mat-label for="name">Nombre:</mat-label>
+            <input matInput id="name" type="text" placeholder="Introduzca nombre" [formControl]="name">
+        </mat-form-field>
+        <mat-divider />
+        <mat-form-field>
+            <mat-label for="description">Descripción:</mat-label>
+            <input matInput id="description" type="text" placeholder="Introduzca descripción"
+                [formControl]="description">
+        </mat-form-field>
+        <button matButton="filled" (click)="sendData()" type="button">Enviar</button>
+    </form>
+</mat-card>

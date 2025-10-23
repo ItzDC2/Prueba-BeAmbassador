@@ -1,0 +1,18 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+mat-card {
+    background: none;
+    box-shadow: none;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.snackbar-error {
+  --mdc-snackbar-container-color: red;  
+  --mat-snack-bar-button-color: white;
+}
