@@ -1,13 +1,13 @@
-// import { HttpClient } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { application } from 'express';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class ComponentRequest {
+export class ServiceRequest {
   
   private endpoint = 'https://api.be-ambassador.com/api/developers/test';
   private appKey = "73e162fb-0d71-4225-b039-9baa8a0308e4";
@@ -20,18 +20,12 @@ export class ComponentRequest {
         'ApiKey': this.generateApiKey(),
         'AppKey': this.appKey 
       }
-    }).pipe(tap(res => {
-      JSON.stringify(res);
-      console.log(res);
-    }));
+    });
   }
 
   private generateApiKey(): string {
-    return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-      const r = Math.floor(Math.random() * 16);
-      const v = c === 'x' ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
+    return Math.random().toString(36).substring(2, 15) + 
+          Math.random().toString(36).substring(2, 15);
   }
 
 }

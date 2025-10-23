@@ -5,7 +5,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatAnchor } from "@angular/material/button";
-import { ComponentRequest } from '../component-request';
+import { ServiceRequest } from '../service/service-request';
 
 @Component({
   selector: 'app-test',
@@ -20,9 +20,23 @@ export class Test {
     description: new FormControl('')
   });
   
-  constructor(private snackBar: MatSnackBar, private componentRequest: ComponentRequest) {}
+  constructor(private snackBar: MatSnackBar, private serviceRequest: ServiceRequest) {}
 
-  sendData() {
+  ComponentRequest() {  //No creo un nuevo objeto porque this.form.value ya lo genera por sí solo
+    this.serviceRequest.sendRequest(this.form.value).subscribe({
+      next: (res) => {
+        this.snackBar.open('Se ha enviado la información correctamente.', 'Cerrar')
+        this.form.reset();
+        this.downloadJSON(res, 'apirequest.json');
+      },
+      error: (err) => {
+        this.snackBar.open('Error al enviar los datos', 'Cerrar', { duration: 3000, panelClass: ['snackbar-error'] })
+      }     
+    })
+    
+  }
+
+  validateData() {
     if (!this.form.controls['name'].value || this.form.controls['name'].value.length === 0) {
       this.snackBar.open('El nombre no puede estar vacío.', 'Cerrar', { duration: 3000 });
       return;
@@ -33,15 +47,16 @@ export class Test {
       return;
     }
     
-    this.componentRequest.sendRequest(this.form.value).subscribe({
-      next: (res) => {
-        this.snackBar.open('Se ha enviado la información correctamente.', 'Cerrar')
-        this.form.reset();
-      },
-      error: (err) => {
-        this.snackBar.open('Error al enviar los datos', 'Cerrar', { duration: 3000, panelClass: ['snackbar-error'] })
-      }     
-    })
+  }
+
+  private downloadJSON(data: any, fileName: string) {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json' })
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    window.URL.revokeObjectURL(url);
   }
 
 }
