@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCard } from '@angular/material/card';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatAnchor } from "@angular/material/button";
+import { MatAnchor, MatIconButton } from "@angular/material/button";
 import { ServiceRequest } from '../service/service-request';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-test',
-  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatCard, MatAnchor],
+  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatCard, MatAnchor, MatIcon, MatIconButton, MatSuffix],
   templateUrl: './test.html',
   styleUrl: './test.scss',
 })
@@ -20,6 +21,8 @@ export class Test {
     description: new FormControl('')
   });
   
+  descriptionVisible = true;
+
   constructor(private snackBar: MatSnackBar, private serviceRequest: ServiceRequest) {}
 
   ComponentRequest() {  //No creo un nuevo objeto porque this.form.value ya lo genera por sí solo
@@ -30,7 +33,7 @@ export class Test {
         this.downloadJSON(res, 'apirequest.json');
       },
       error: (err) => {
-        this.snackBar.open('Error al enviar los datos', 'Cerrar', { duration: 3000, panelClass: ['snackbar-error'] })
+        this.snackBar.open('Ha ocurrido un error al enviar los datos.', 'Cerrar', { duration: 3000, panelClass: ['snackbar-error'] })
       }     
     })
     
@@ -47,6 +50,12 @@ export class Test {
       return;
     }
     
+    this.ComponentRequest();
+
+  }
+
+  toggleDescription() {
+    this.descriptionVisible = !this.descriptionVisible;
   }
 
   private downloadJSON(data: any, fileName: string) {

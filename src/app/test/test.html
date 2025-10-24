@@ -9,11 +9,15 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Descripción</mat-label>
-      <textarea matInput formControlName="description" placeholder="Introduzca descripción" rows="3"></textarea>
+      <input matInput [type]="descriptionVisible ? 'text' : 'password'" formControlName="description"
+        placeholder="Introduzca descripción" />
+      <button mat-icon-button matSuffix (click)="toggleDescription()"><mat-icon>{{descriptionVisible ? 'visibility' :
+          'visibility_off'}}</mat-icon></button>
     </mat-form-field>
 
     <div class="button-row">
-      <button mat-flat-button color="primary" type="button" (click)="validateData()">Enviar</button>
+      <button mat-flat-button color="primary" type="button" (click)="validateData()">Enviar y descargar
+        respuesta</button>
     </div>
   </form>
 </mat-card>
