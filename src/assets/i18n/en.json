@@ -1,0 +1,19 @@
+{
+    "request-messages": {
+        "successfully-sent": "The information was sent successfully.",
+        "error-detected": "An error occurred while trying to send the request.",
+        "close-snackbar": "Close"
+    },
+    "validation-messages": {
+        "name-is-empty": "Name cannot be empty.",
+        "description-is-empty": "Description cannot be empty."
+    },
+    "form-labels": {
+        "title": "Data Submission",
+        "name": "Name",
+        "name-placeholder": "Enter your name",
+        "description": "Description",
+        "description-placeholder": "Enter a description",
+        "send-button": "Send request and download JSON response"
+    }
+}

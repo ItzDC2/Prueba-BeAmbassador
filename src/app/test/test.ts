@@ -7,10 +7,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatAnchor, MatIconButton } from "@angular/material/button";
 import { ServiceRequest } from '../service/service-request';
 import { MatIcon } from '@angular/material/icon';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-test',
-  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatCard, MatAnchor, MatIcon, MatIconButton, MatSuffix],
+  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput,
+     MatCard, MatAnchor, MatIcon, MatIconButton, MatSuffix, TranslocoModule],
   templateUrl: './test.html',
   styleUrl: './test.scss',
 })
@@ -22,8 +24,9 @@ export class Test {
   });
   
   descriptionVisible = true;
+  selectedLang = 'ES';
 
-  constructor(private snackBar: MatSnackBar, private serviceRequest: ServiceRequest) {}
+  constructor(private snackBar: MatSnackBar, private serviceRequest: ServiceRequest, private translocoService: TranslocoService) {}
 
   ComponentRequest() {  //No creo un nuevo objeto porque this.form.value ya lo genera por sí solo
     this.serviceRequest.sendRequest(this.form.value).subscribe({
@@ -56,6 +59,16 @@ export class Test {
 
   toggleDescription() {
     this.descriptionVisible = !this.descriptionVisible;
+  }
+
+  switchLang() {
+    if(this.selectedLang === 'ES') {
+      this.selectedLang = 'EN';
+      this.translocoService.setActiveLang('en');
+    } else {
+      this.selectedLang = 'ES';
+      this.translocoService.setActiveLang('es');
+    }
   }
 
   private downloadJSON(data: any, fileName: string) {
