@@ -1,0 +1,27 @@
+<mat-card class="form-card">
+  <div class="lang-switch">
+    <button mat-stroked-button (click)="switchLang()">{{selectedLang}}</button>
+  </div>
+
+  <form action="#" class="form-container" [formGroup]="form">
+    <h2 class="form-title">{{ 'form-labels.title' | transloco }}</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'form-labels.name' | transloco}}</mat-label>
+      <input matInput formControlName="name" placeholder="{{ 'form-labels.name-placeholder' | transloco}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'form-labels.description' | transloco}}</mat-label>
+      <input matInput [type]="descriptionVisible ? 'text' : 'password'" formControlName="description"
+        placeholder="{{ 'form-labels.description-placeholder' | transloco}}" />
+      <button mat-icon-button matSuffix (click)="toggleDescription()"><mat-icon>{{descriptionVisible ? 'visibility' :
+          'visibility_off'}}</mat-icon></button>
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-flat-button color="primary" type="button" (click)="validateData()">{{ 'form-labels.send-button' |
+        transloco}}</button>
+    </div>
+  </form>
+</mat-card>

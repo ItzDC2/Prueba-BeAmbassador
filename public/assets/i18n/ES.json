@@ -1,0 +1,19 @@
+{
+    "request-messages": {
+        "successfully-sent": "La información se envió correctamente.",
+        "error-detected": "Ocurrió un error al intentar enviar la solicitud.",
+        "close-snackbar": "Cerrar"
+    },
+    "validation-messages": {
+        "name-is-empty": "El nombre no puede estar vacío.",
+        "description-is-empty": "La descripción no puede estar vacía."
+    },
+    "form-labels": {
+        "title": "Envío de datos",
+        "name": "Nombre",
+        "name-placeholder": "Introduce tu nombre",
+        "description": "Descripción",
+        "description-placeholder": "Introduce una descripción",
+        "send-button": "Enviar solicitud y descargar respuesta JSON"
+    }
+}
