@@ -7,21 +7,21 @@
     <h2 class="form-title">{{ 'form-labels.title' | transloco }}</h2>
 
     <mat-form-field appearance="outline">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name" placeholder="Introduzca nombre">
+      <mat-label>{{ 'form-labels.name' | transloco}}</mat-label>
+      <input matInput formControlName="name" placeholder="{{ 'form-labels.name-placeholder' | transloco}}">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Descripción</mat-label>
+      <mat-label>{{ 'form-labels.description' | transloco}}</mat-label>
       <input matInput [type]="descriptionVisible ? 'text' : 'password'" formControlName="description"
-        placeholder="Introduzca descripción" />
+        placeholder="{{ 'form-labels.description-placeholder' | transloco}}" />
       <button mat-icon-button matSuffix (click)="toggleDescription()"><mat-icon>{{descriptionVisible ? 'visibility' :
           'visibility_off'}}</mat-icon></button>
     </mat-form-field>
 
     <div class="button-row">
-      <button mat-flat-button color="primary" type="button" (click)="validateData()">Enviar petición y descargar
-        respuesta JSON</button>
+      <button mat-flat-button color="primary" type="button" (click)="validateData()">{{ 'form-labels.send-button' |
+        transloco}}</button>
     </div>
   </form>
 </mat-card>
