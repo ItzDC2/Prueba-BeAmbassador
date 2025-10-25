@@ -1,59 +1,48 @@
-# PruebaBeAmbassador
+# BeAmbassador - Prueba de Candidatura
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.6.
+## Descripción del Proyecto 📝
 
-## Development server
+Esta aplicación es una prueba de candidatura para **BeAmbassador**.  
+El objetivo principal es demostrar habilidades en **Angular 20**, **Transloco para internacionalización**, **formularios reactivos**, **descarga de archivos JSON** y buenas prácticas de desarrollo frontend moderno.
 
-To start a local development server, run:
+### Funcionalidades implementadas ⚙️
 
-```bash
-ng serve
-```
+1. Formulario de datos con validaciones.
+2. Traducciones dinámicas (ES/EN) usando Transloco.
+3. Descarga de datos en formato JSON.
+4. UI responsive y adaptable a móviles y desktop.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Tecnologías utilizadas 💻
 
-## Code scaffolding
+- **Angular 20** (Standalone Components)
+- **@jsverse/transloco** para traducciones
+- **Angular Material** para componentes UI
+- **SCSS** para estilos y responsive design
+- **TypeScript** para toda la lógica de negocio
+- **Vite** como bundler y dev server
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Archivos y rutas 📂
 
-```bash
-ng generate component component-name
-```
+- 📘 `assets/i18n/` → Archivos de traducción
+- ⚙️ `app/config.ts` → Configuración de Transloco y rutas
+- 🎨 `styles/` → SCSS global y variables
+- 🧩 `app/` → Componentes, servicios y lógica de negocio
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Instalación 🚀
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Clonar el repositorio:
 
 ```bash
-ng test
+git clone https://github.com/ItzDC2/Prueba-BeAmbassador.git
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Dirigirse al repositorio:
 
 ```bash
-ng e2e
+cd {RUTA_AL_REPOSITORIO}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Ejecutar comandos:
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. `npm install`
+1. `ng serve [OPCIONAL: --open]`
