@@ -1,6 +1,6 @@
 <mat-card class="form-card">
   <div class="lang-switch">
-    <button mat-stroked-button (click)="switchLang()">{{selectedLang}}</button>
+    <button matMiniFab (click)="switchLang()">{{selectedLang}}</button>
   </div>
 
   <form action="#" class="form-container" [formGroup]="form">
@@ -20,8 +20,13 @@
     </mat-form-field>
 
     <div class="button-row">
-      <button mat-flat-button color="primary" type="button" (click)="validateData()">{{ 'form-labels.send-button' |
-        transloco}}</button>
+      <button matFab extended type="button" (click)="validateData()" [disabled]="isLoading">
+        @if(!isLoading) {
+        {{ 'form-labels.send-button' | transloco}}
+        } @else {
+        <mat-progress-spinner diameter="20" mode="indeterminate" color="accent" />
+        }
+      </button>
     </div>
   </form>
 </mat-card>

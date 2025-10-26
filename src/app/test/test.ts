@@ -4,10 +4,11 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatAnchor, MatIconButton } from '@angular/material/button';
+import { MatAnchor, MatIconButton, MatMiniFabButton, MatFabButton } from '@angular/material/button';
 import { ServiceRequest } from '../service/service-request';
 import { MatIcon } from '@angular/material/icon';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-test',
@@ -17,11 +18,13 @@ import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
     MatLabel,
     MatInput,
     MatCard,
-    MatAnchor,
     MatIcon,
     MatIconButton,
     MatSuffix,
     TranslocoModule,
+    MatProgressSpinner,
+    MatMiniFabButton,
+    MatFabButton,
   ],
   templateUrl: './test.html',
   styleUrl: './test.scss',
@@ -35,6 +38,7 @@ export class Test {
   private translocoService = inject(TranslocoService);
 
   descriptionVisible = true;
+  isLoading = false;
 
   get selectedLang(): string {
     return this.translocoService.getActiveLang();
@@ -43,6 +47,7 @@ export class Test {
   constructor(private snackBar: MatSnackBar, private serviceRequest: ServiceRequest) {}
 
   ComponentRequest() {
+    this.isLoading = true;
     //No creo un nuevo objeto porque this.form.value ya lo genera por sí solo
     this.serviceRequest.sendRequest(this.form.value).subscribe({
       next: (res) => {
@@ -52,6 +57,7 @@ export class Test {
           3000
         );
         this.form.reset();
+        this.isLoading = false;
         this.downloadJSON(res, 'apirequest.json');
       },
       error: (err) => {
@@ -60,6 +66,7 @@ export class Test {
           this.translocoService.translate('request-messages.close-snackbar'),
           3000
         );
+        this.isLoading = false;
       },
     });
   }
