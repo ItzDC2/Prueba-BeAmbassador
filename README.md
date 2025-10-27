@@ -3,7 +3,6 @@
 ## Descripción del Proyecto 📝
 
 Esta aplicación es una prueba de candidatura para **BeAmbassador**.  
-El objetivo principal es demostrar habilidades en **Angular 20**, **Transloco para internacionalización**, **formularios reactivos**, **descarga de archivos JSON** y buenas prácticas de desarrollo frontend moderno.
 
 ### Funcionalidades implementadas ⚙️
 
