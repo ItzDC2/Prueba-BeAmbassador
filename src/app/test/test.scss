@@ -5,6 +5,11 @@ $margin: 0 auto;
 $standard-margin: 25px;
 $standard-padding: 25px;
 $gap: 2.5;
+$card-shadow-color: rgba(255, 182, 255, 0.05);
+$card-border-top: rgba(103, 58, 183, 0.5);    
+$card-border-right: rgba(126, 87, 194, 0.5);  
+$card-border-bottom: rgba(149, 117, 205, 0.5); 
+$card-border-left: rgba(179, 157, 219, 0.5);  
 
 @mixin base-form {
   gap: $gap + 2;
@@ -58,10 +63,31 @@ mat-card {
 }
 
 .form-card {
+  position: relative;
   background: #18181b;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(255, 182, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px $card-shadow-color;
+  border-top: 1px solid $card-border-top;
+  border-right: 1px solid $card-border-right;
+  border-bottom: 1px solid $card-border-bottom;
+  border-left: 1px solid $card-border-left;
+  overflow: hidden;
+  color: #fff;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,100% {
+    box-shadow: 
+      0 0 10px rgba(179,157,219,0.15),
+      0 0 10px rgba(149,117,205,0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(179, 157, 219, 0.25),
+      0 0 30px rgba(126, 87, 194, 0.25);
+  }
+  
 }
 
 @media (max-width: 768px) {
